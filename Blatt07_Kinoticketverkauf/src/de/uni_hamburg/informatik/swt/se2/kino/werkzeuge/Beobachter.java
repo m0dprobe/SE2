@@ -9,6 +9,9 @@ public interface Beobachter
 {
     /**
      * Reagiert auf Änderungen in den beobachteten Subwerkzeugen.
+     * 
+     * @param b ein beobachtbares Subwerkzeug
+     * @require b ist ein gültiges Subwerkzeug
      */
     void reagiereAufAenderungen(Beobachtbar b);
 }

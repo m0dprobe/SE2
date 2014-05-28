@@ -125,8 +125,11 @@ public class KassenWerkzeug implements Beobachter
         return _vorstellungAuswaehlWerkzeug.getAusgewaehlteVorstellung();
     }
     
+    @Override
     public void reagiereAufAenderungen(Beobachtbar b)
     {     
+        assert b instanceof DatumAuswaehlWerkzeug || b instanceof VorstellungsAuswaehlWerkzeug : "Vorbedingung verletzt: b kein gültiges Subwerkzeug";
+        
         if(b instanceof DatumAuswaehlWerkzeug)
         {
             setzeTagesplanFuerAusgewaehltesDatum();
