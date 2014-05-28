@@ -38,7 +38,7 @@ public class VorstellungsAuswaehlWerkzeug extends Beobachtbar
      */
     private void vorstellungWurdeAusgewaehlt()
     {
-        
+        informiereUeberAenderungen();
     }
 
     /**

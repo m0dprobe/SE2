@@ -2,7 +2,6 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.datumsauswaehler;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JPanel;
 
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Datum;
@@ -42,6 +41,8 @@ public class DatumAuswaehlWerkzeug extends Beobachtbar
         _ausgewaehltesDatum = _ausgewaehltesDatum.vorherigerTag();
         _ui.getDatumLabel()
                 .setText(_ausgewaehltesDatum.getFormatiertenString());
+        informiereUeberAenderungen();
+        
     }
 
     /**
@@ -52,6 +53,7 @@ public class DatumAuswaehlWerkzeug extends Beobachtbar
         _ausgewaehltesDatum = _ausgewaehltesDatum.naechsterTag();
         _ui.getDatumLabel()
                 .setText(_ausgewaehltesDatum.getFormatiertenString());
+        informiereUeberAenderungen();
     }
 
     /**

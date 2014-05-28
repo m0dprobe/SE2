@@ -60,6 +60,9 @@ public class KassenWerkzeug implements Beobachter
         registriereUIAktionen();
         setzeTagesplanFuerAusgewaehltesDatum();
         setzeAusgewaehlteVorstellung();
+        
+        _datumAuswaehlWerkzeug.registriereBeobachter(this);
+        _vorstellungAuswaehlWerkzeug.registriereBeobachter(this);
 
         _ui.zeigeFenster();
     }
@@ -123,7 +126,15 @@ public class KassenWerkzeug implements Beobachter
     }
     
     public void reagiereAufAenderungen(Beobachtbar b)
-    {
-        // TODO implementieren
+    {     
+        if(b instanceof DatumAuswaehlWerkzeug)
+        {
+            setzeTagesplanFuerAusgewaehltesDatum();
+            setzeAusgewaehlteVorstellung();
+        }
+        else if(b instanceof VorstellungsAuswaehlWerkzeug) 
+        {
+            setzeAusgewaehlteVorstellung();
+        }
     }
 }
