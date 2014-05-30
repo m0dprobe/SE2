@@ -10,6 +10,8 @@ import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Platz;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Kinosaal;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Vorstellung;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
+import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.SubwerkzeugObserver;
+import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.bezahlen.BezahlWerkzeug;
 
 /**
  * Mit diesem Werkzeug können Plätze verkauft und storniert werden. Es arbeitet
@@ -28,6 +30,8 @@ public class PlatzVerkaufsWerkzeug
     private Vorstellung _vorstellung;
 
     private PlatzVerkaufsWerkzeugUI _ui;
+
+    private BezahlWerkzeug _bezahlwerkzeug;
 
     /**
      * Initialisiert das PlatzVerkaufsWerkzeug.
@@ -173,8 +177,21 @@ public class PlatzVerkaufsWerkzeug
      */
     private void verkaufePlaetze(Vorstellung vorstellung)
     {
-        Set<Platz> plaetze = _ui.getPlatzplan().getAusgewaehltePlaetze();
-        vorstellung.verkaufePlaetze(plaetze);
+        final Set<Platz> plaetze = _ui.getPlatzplan().getAusgewaehltePlaetze();
+        Geldbetrag preis = new Geldbetrag(_vorstellung.getPreis() * plaetze.size());
+
+        _bezahlwerkzeug = new BezahlWerkzeug(preis);
+        _bezahlwerkzeug.registriereBeobachter(new SubwerkzeugObserver()
+        {
+            @Override public void reagiereAufAenderung()
+            {
+                _vorstellung.verkaufePlaetze(plaetze);
+            }
+        });
+
+        _bezahlwerkzeug.init();
+
+        // vorstellung.verkaufePlaetze(plaetze);
         aktualisierePlatzplan();
     }
 
