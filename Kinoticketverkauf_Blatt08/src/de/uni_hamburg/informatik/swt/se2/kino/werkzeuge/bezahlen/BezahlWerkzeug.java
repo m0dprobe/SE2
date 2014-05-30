@@ -77,6 +77,7 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
                 _ui.getRestCent().setText(rueckgeld.getFormatiertenCentAnteil());
 
                 _ui.getOKButton().setEnabled(true);
+                _ui.getOKButton().requestFocus();
             }
             else
             {

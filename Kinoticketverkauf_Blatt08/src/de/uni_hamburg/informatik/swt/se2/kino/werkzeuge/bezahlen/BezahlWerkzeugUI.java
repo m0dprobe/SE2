@@ -45,7 +45,7 @@ public class BezahlWerkzeugUI
         Container contentPane = _dialog.getContentPane();
         contentPane.setLayout(new BorderLayout());
 
-        // TODO Layout verbessern
+        // DONE Layout verbessern
 
         _zuZahlenLabel = new JLabel("ZU ZAHLEN:");
         _zuZahlenEuro = new JLabel(Integer.toString(preis.getEuroAnteil()));
