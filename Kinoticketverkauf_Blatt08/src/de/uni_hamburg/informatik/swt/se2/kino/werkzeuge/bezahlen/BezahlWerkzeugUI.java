@@ -40,6 +40,8 @@ public class BezahlWerkzeugUI
     private void erzeugeUI(Geldbetrag preis)
     {
         _dialog = new JDialog(new JDialog(), "Barzahlung", true);
+        _dialog.setSize(300,160);
+        _dialog.setResizable(false);
         Container contentPane = _dialog.getContentPane();
         contentPane.setLayout(new BorderLayout());
 
@@ -48,11 +50,12 @@ public class BezahlWerkzeugUI
         _zuZahlenLabel = new JLabel("ZU ZAHLEN:");
         _zuZahlenEuro = new JLabel(Integer.toString(preis.getEuroAnteil()));
         _zuZahlenKomma = new JLabel(",");
-        _zuZahlenCent = new JLabel(Integer.toString(preis.getCentAnteil()));
+        _zuZahlenCent = new JLabel(preis.getFormatiertenCentAnteil());
         _zuZahlenWaehrung = new JLabel("EUR");
 
         _gegebenLabel = new JLabel("GEGEBEN:");
-        _gegebenEuro = new JTextField();
+        _gegebenEuro = new JTextField("", 2);
+        _gegebenEuro.setHorizontalAlignment(JTextField.RIGHT);
         _gegebenKomma = new JLabel(",");
         _gegebenCent = new JTextField("00", 2);
         _gegebenWaehrung = new JLabel("EUR");
@@ -60,12 +63,12 @@ public class BezahlWerkzeugUI
         _restLabel = new JLabel("RÜCKGABE:");
         _restEuro = new JLabel(Integer.toString(preis.getEuroAnteil()));
         _restKomma = new JLabel(",");
-        _restCent = new JLabel(Integer.toString(preis.getCentAnteil()));
+        _restCent = new JLabel(preis.getFormatiertenCentAnteil());
         _restWaehrung = new JLabel("EUR");
 
         _okButton = new JButton("OK");
         _cancelButton = new JButton("Abbrechen");
-
+        
         // Panel oben
 
         JPanel topPanel = new JPanel();
@@ -130,45 +133,51 @@ public class BezahlWerkzeugUI
                         )
         );*/
 
-        GridLayout layout = new GridLayout(3, 5);
+        GridLayout layout = new GridLayout(3, 2);
+        
+        JPanel _zuZahlenPanel = new JPanel();
+        JPanel _gegebenPanel = new JPanel();
+        JPanel _restPanel = new JPanel();
+        
+        _zuZahlenPanel.setLayout(new FlowLayout());
+        _gegebenPanel.setLayout(new FlowLayout());
+        _restPanel.setLayout(new FlowLayout());
+        
+        _zuZahlenPanel.add(_zuZahlenEuro);
+        _zuZahlenPanel.add(_zuZahlenKomma);
+        _zuZahlenPanel.add(_zuZahlenCent);
+        _zuZahlenPanel.add(_zuZahlenWaehrung);
+
+        _gegebenPanel.add(_gegebenEuro);
+        _gegebenPanel.add(_gegebenKomma);
+        _gegebenPanel.add(_gegebenCent);
+        _gegebenPanel.add(_gegebenWaehrung);
+
+        _restPanel.add(_restEuro);
+        _restPanel.add(_restKomma);
+        _restPanel.add(_restCent);
+        _restPanel.add(_restWaehrung);
         
         layout.addLayoutComponent(null, _zuZahlenLabel);
-        layout.addLayoutComponent(null, _zuZahlenEuro);
-        layout.addLayoutComponent(null, _zuZahlenKomma);
-        layout.addLayoutComponent(null, _zuZahlenCent);
-        layout.addLayoutComponent(null, _zuZahlenWaehrung);
+        layout.addLayoutComponent(null, _zuZahlenPanel);
+        
         
         layout.addLayoutComponent(null, _gegebenLabel);
-        layout.addLayoutComponent(null, _gegebenEuro);
-        layout.addLayoutComponent(null, _gegebenKomma);
-        layout.addLayoutComponent(null, _gegebenCent);
-        layout.addLayoutComponent(null, _gegebenWaehrung);
+        layout.addLayoutComponent(null, _gegebenPanel);
 
         layout.addLayoutComponent(null, _restLabel);
-        layout.addLayoutComponent(null, _restEuro);
-        layout.addLayoutComponent(null, _restKomma);
-        layout.addLayoutComponent(null, _restCent);
-        layout.addLayoutComponent(null, _restWaehrung);
+        layout.addLayoutComponent(null, _restPanel);
 
         topPanel.setLayout(layout);
         
         topPanel.add(_zuZahlenLabel);
-        topPanel.add(_zuZahlenEuro);
-        topPanel.add(_zuZahlenKomma);
-        topPanel.add(_zuZahlenCent);
-        topPanel.add(_zuZahlenWaehrung);
+        topPanel.add(_zuZahlenPanel);
 
         topPanel.add(_gegebenLabel);
-        topPanel.add(_gegebenEuro);
-        topPanel.add(_gegebenKomma);
-        topPanel.add(_gegebenCent);
-        topPanel.add(_gegebenWaehrung);
+        topPanel.add(_gegebenPanel);
 
         topPanel.add(_restLabel);
-        topPanel.add(_restEuro);
-        topPanel.add(_restKomma);
-        topPanel.add(_restCent);
-        topPanel.add(_restWaehrung);
+        topPanel.add(_restPanel);
 
         // unteres Panel
 

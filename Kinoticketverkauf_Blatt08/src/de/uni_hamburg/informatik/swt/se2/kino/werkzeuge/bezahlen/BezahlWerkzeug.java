@@ -74,7 +74,7 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
                 int restpreis = input_int - (_preis.getEuroAnteil()*100 + _preis.getCentAnteil());
                 Geldbetrag rueckgeld = new Geldbetrag(restpreis);
                 _ui.getRestEuro().setText(Integer.toString(rueckgeld.getEuroAnteil()));
-                _ui.getRestCent().setText(Integer.toString(rueckgeld.getCentAnteil()));
+                _ui.getRestCent().setText(rueckgeld.getFormatiertenCentAnteil());
 
                 _ui.getOKButton().setEnabled(true);
             }
@@ -82,6 +82,7 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
             {
                 _ui.zeigeFehler("Bitte geben Sie einen ausreichenden Betrag ein.",
                         "Wir haben alle zu wenig Geld, aber…");
+                _ui.getOKButton().setEnabled(false);
             }
         }
 

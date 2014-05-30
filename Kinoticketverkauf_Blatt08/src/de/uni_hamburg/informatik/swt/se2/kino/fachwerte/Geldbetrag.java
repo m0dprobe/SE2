@@ -60,7 +60,7 @@ public final class Geldbetrag
      * 
      * @return eine String-Repräsentation des Cent-Anteils.
      */
-    private String getFormatiertenCentAnteil()
+    public String getFormatiertenCentAnteil()
     {
         String result = "";
         if (_centAnteil < 10)
