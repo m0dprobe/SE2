@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Platz;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Kinosaal;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Vorstellung;
+import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
 
 /**
  * Mit diesem Werkzeug können Plätze verkauft und storniert werden. Es arbeitet
@@ -106,8 +107,8 @@ public class PlatzVerkaufsWerkzeug
 
         if (istVerkaufenMoeglich(plaetze))
         {
-            int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
-            _ui.getPreisLabel().setText("Gesamtpreis: " + preis + " Eurocent");
+            Geldbetrag preis = new Geldbetrag(_vorstellung.getPreisFuerPlaetze(plaetze));
+            _ui.getPreisLabel().setText("Gesamtpreis: " + preis.getFormatiertenString() + " EUR");
         }
         else
         {
