@@ -74,65 +74,6 @@ public class BezahlWerkzeugUI
         JPanel topPanel = new JPanel();
         contentPane.add(topPanel, BorderLayout.NORTH);
 
-        //GroupLayout layout = new GroupLayout(topPanel);
-
-        /*layout.setAutoCreateGaps(true);
-        layout.setAutoCreateContainerGaps(true);
-
-        layout.setHorizontalGroup(
-                layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup()
-                                .addComponent(_zuZahlenLabel)
-                                .addComponent(_gegebenLabel)
-                                .addComponent(_restLabel)
-                        )
-                        .addGroup(layout.createParallelGroup()
-                                .addComponent(_zuZahlenEuro)
-                                .addComponent(_gegebenEuro)
-                                .addComponent(_restEuro)
-                        )
-                        .addGroup(layout.createParallelGroup()
-                                .addComponent(_zuZahlenKomma)
-                                .addComponent(_gegebenKomma)
-                                .addComponent(_restKomma)
-                        )
-                        .addGroup(layout.createParallelGroup()
-                                .addComponent(_zuZahlenCent)
-                                .addComponent(_gegebenCent)
-                                .addComponent(_restCent)
-                        )
-                        .addGroup(layout.createParallelGroup()
-                                .addComponent(_zuZahlenWaehrung)
-                                .addComponent(_gegebenWaehrung)
-                                .addComponent(_restWaehrung)
-                        )
-        );
-
-        layout.setVerticalGroup(
-                layout.createParallelGroup()
-                        .addGroup(layout.createSequentialGroup()
-                                        .addComponent(_zuZahlenLabel)
-                                        .addComponent(_zuZahlenEuro)
-                                        .addComponent(_zuZahlenKomma)
-                                        .addComponent(_zuZahlenCent)
-                                        .addComponent(_zuZahlenWaehrung)
-                        )
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(_gegebenLabel)
-                                .addComponent(_gegebenEuro)
-                                .addComponent(_gegebenKomma)
-                                .addComponent(_gegebenCent)
-                                .addComponent(_gegebenWaehrung)
-                        )
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(_restLabel)
-                                .addComponent(_restEuro)
-                                .addComponent(_restKomma)
-                                .addComponent(_restCent)
-                                .addComponent(_restWaehrung)
-                        )
-        );*/
-
         GridLayout layout = new GridLayout(3, 2);
         
         JPanel _zuZahlenPanel = new JPanel();

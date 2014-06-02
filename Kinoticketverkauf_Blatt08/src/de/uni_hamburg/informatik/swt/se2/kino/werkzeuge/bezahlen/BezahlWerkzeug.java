@@ -3,7 +3,6 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.bezahlen;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
 import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.ObservableSubwerkzeug;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
