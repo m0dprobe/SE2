@@ -79,7 +79,7 @@
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
-      <operations public="false" package="false" protected="true" private="true" static="false"/>    
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
   <class id="9" language="java" 
@@ -87,7 +87,7 @@
     project="Kinoticketverkauf_Blatt08" 
     file="/Kinoticketverkauf_Blatt08/src/de/uni_hamburg/informatik/swt/se2/kino/werkzeuge/platzverkauf/PlatzVerkaufsWerkzeugUI.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="186" y="272"/>    
+    <position height="-1" width="-1" x="187" y="184"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
