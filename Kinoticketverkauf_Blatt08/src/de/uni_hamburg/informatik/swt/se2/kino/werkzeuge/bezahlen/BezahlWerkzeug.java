@@ -85,6 +85,10 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
                 _ui.getOKButton().setEnabled(false);
             }
         }
+        else
+        {
+        	_ui.zeigeFehler("Bitte nur Zahlen eingeben.", "Möp.");
+        }
 
     }
 }
