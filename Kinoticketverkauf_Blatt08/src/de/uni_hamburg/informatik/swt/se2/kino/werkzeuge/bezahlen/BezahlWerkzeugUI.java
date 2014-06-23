@@ -1,6 +1,6 @@
 package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.bezahlen;
 
-import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,31 +15,41 @@ public class BezahlWerkzeugUI
     private JButton _okButton;
     private JButton _cancelButton;
     private JLabel _zuZahlenLabel;
-//    private JLabel _zuZahlenEuro;
-//    private JLabel _zuZahlenKomma;
     private JLabel _zuZahlenCent;
     private JLabel _zuZahlenWaehrung;
     private JLabel _gegebenLabel;
-//    private JTextField _gegebenEuro;
-//    private JLabel _gegebenKomma;
     private JTextField _gegebenCent;
     private JLabel _gegebenWaehrung;
     private JLabel _restLabel;
-//    private JLabel _restEuro;
-//    private JLabel _restKomma;
     private JLabel _restCent;
     private JLabel _restWaehrung;
     private int _preis;
 
+    /**
+     * Initialisiert ein Exemplar der UI des BezahlWerkzeugs mit dem gegebenen Preis.
+     * @param preis Der anzuzeigende Preis in Cent.
+     * 
+     * @require preis >= 0
+     */
     public BezahlWerkzeugUI(int preis)
     {
-        _preis = preis;
+        assert preis >= 0 : "Vorbedingung verletzt: preis >= 0";
+    	
+    	_preis = preis;
         erzeugeUI(_preis);
     }
 
+    /**
+     * Erzeugt die UI mit dem gegebenen Preis.
+     * @param preis Der zu zahlende Preis in Cent.
+     * 
+     * @require preis >= 0
+     */
     private void erzeugeUI(int preis)
     {
-        _dialog = new JDialog(new JDialog(), "Barzahlung", true);
+        assert preis >= 0 : "Vorbedingung verletzt: preis >= 0";
+    	
+    	_dialog = new JDialog(new JDialog(), "Barzahlung", true);
         _dialog.setSize(300,160);
         _dialog.setResizable(false);
         Container contentPane = _dialog.getContentPane();
@@ -48,23 +58,17 @@ public class BezahlWerkzeugUI
         // DONE Layout verbessern
 
         _zuZahlenLabel = new JLabel("ZU ZAHLEN:");
-        //_zuZahlenEuro = new JLabel(Integer.toString(preis.getEuroAnteil()));
-        //_zuZahlenKomma = new JLabel(",");
         _zuZahlenCent = new JLabel(Integer.toString(preis));
         _zuZahlenWaehrung = new JLabel("Cent");
 
         _gegebenLabel = new JLabel("GEGEBEN:");
-        //_gegebenEuro = new JTextField("", 2);
-        //_gegebenEuro.setHorizontalAlignment(JTextField.RIGHT);
-        //_gegebenKomma = new JLabel(",");
         _gegebenCent = new JTextField(6);
         _gegebenCent.setHorizontalAlignment(JTextField.CENTER);
         _gegebenWaehrung = new JLabel("Cent");
 
         _restLabel = new JLabel("RÜCKGABE:");
-        //_restEuro = new JLabel(Integer.toString(preis.getEuroAnteil()));
-        //_restKomma = new JLabel(",");
-        _restCent = new JLabel(Integer.toString(preis));
+        _restCent = new JLabel("-" + Integer.toString(preis));
+        _restCent.setForeground(Color.RED);
         _restWaehrung = new JLabel("Cent");
 
         _okButton = new JButton("OK");
@@ -85,18 +89,12 @@ public class BezahlWerkzeugUI
         _gegebenPanel.setLayout(new FlowLayout());
         _restPanel.setLayout(new FlowLayout());
         
-        //_zuZahlenPanel.add(_zuZahlenEuro);
-        //_zuZahlenPanel.add(_zuZahlenKomma);
         _zuZahlenPanel.add(_zuZahlenCent);
         _zuZahlenPanel.add(_zuZahlenWaehrung);
 
-        //_gegebenPanel.add(_gegebenEuro);
-        //_gegebenPanel.add(_gegebenKomma);
         _gegebenPanel.add(_gegebenCent);
         _gegebenPanel.add(_gegebenWaehrung);
 
-        //_restPanel.add(_restEuro);
-        //_restPanel.add(_restKomma);
         _restPanel.add(_restCent);
         _restPanel.add(_restWaehrung);
         
@@ -134,16 +132,28 @@ public class BezahlWerkzeugUI
         contentPane.add(lowerPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Schließt den Dialog.
+     */
     public void schliessen()
     {
         _dialog.dispose();
     }
 
+    /**
+     * Zeigt den Dialog.
+     */
     public void zeigeDialog()
     {
         _dialog.setVisible(true);
     }
 
+    /**
+     * Gibt den OK-Button zurück.
+     * @return der OK-Button
+     * 
+     * @ensure result != null
+     */
     public JButton getOKButton()
     {
         return _okButton;

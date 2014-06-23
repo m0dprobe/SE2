@@ -22,7 +22,7 @@ import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.bezahlen.BezahlWerkzeug;
  * werden.
  * 
  * @author SE2-Team
- * @version SoSe 2013
+ * @version SoSe 2014
  */
 public class PlatzVerkaufsWerkzeug
 {

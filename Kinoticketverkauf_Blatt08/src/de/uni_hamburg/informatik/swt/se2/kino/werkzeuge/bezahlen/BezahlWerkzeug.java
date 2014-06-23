@@ -1,6 +1,5 @@
 package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.bezahlen;
 
-import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
 import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.ObservableSubwerkzeug;
 
 import javax.swing.event.DocumentEvent;
@@ -19,18 +18,28 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
     private BezahlWerkzeugUI _ui;
     private int _preis;
 
+    /**
+     * Initialisiert ein Exemplar des BezahlWerkzeugs mit dem angegebenen Preis.
+     * @param preis Der Preis der zu verkaufenden Plätze in Cent.
+     */
     public BezahlWerkzeug(int preis)
     {
         _preis = preis;
         _ui = new BezahlWerkzeugUI(_preis);
     }
 
+    /**
+     * Initialisiert die UI-Aktionen und zeigt den Dialog. 
+     */
     public void init()
     {
         registriereUIAktionen();
         _ui.zeigeDialog();
     }
 
+    /**
+     * Fügt der UI die Funktionalität hinzu mit entsprechenden Listenern.
+     */
     private void registriereUIAktionen()
     {
         _ui.getCancelButton().addActionListener(new ActionListener()
@@ -68,10 +77,13 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
         });
     }
 
+    /**
+     * Reagiert auf Eingaben.
+     */
     private void aufEingabeReagieren()
     {
         String input = _ui.getEingabeCent().getText();
-        if(input.matches("[0-9]+"))
+        if(input.matches("[0-9]*") && !input.equals(""))
         {
             int input_int = Integer.parseInt(input);
             if(input_int >= _preis)
@@ -93,6 +105,11 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
 
                 _ui.getOKButton().setEnabled(false);
             }
+        }
+        else if (input.equals(""))
+        {
+        	_ui.getRestCent().setForeground(Color.red);
+        	_ui.getRestCent().setText("-" + Integer.toString(_preis));
         }
         else
         {
