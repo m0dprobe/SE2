@@ -52,6 +52,7 @@ public class BezahlWerkzeugUI
     	_dialog = new JDialog(new JDialog(), "Barzahlung", true);
         _dialog.setSize(300,160);
         _dialog.setResizable(false);
+        _dialog.setLocationRelativeTo(null);
         Container contentPane = _dialog.getContentPane();
         contentPane.setLayout(new BorderLayout());
 

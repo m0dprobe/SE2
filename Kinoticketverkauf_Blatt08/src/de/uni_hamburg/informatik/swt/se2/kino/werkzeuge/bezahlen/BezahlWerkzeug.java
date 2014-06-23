@@ -93,12 +93,9 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
                 _ui.getRestCent().setText(Integer.toString(restpreis));
 
                 _ui.getOKButton().setEnabled(true);
-                // _ui.getOKButton().requestFocus();
             }
             else
             {
-//                _ui.zeigeFehler("Bitte geben Sie einen ausreichenden Betrag ein.",
-//                        "Wir haben alle zu wenig Geld, aber…");
             	_ui.getRestCent().setForeground(Color.red);
                 int restpreis = input_int - _preis;
                 _ui.getRestCent().setText(Integer.toString(restpreis));
