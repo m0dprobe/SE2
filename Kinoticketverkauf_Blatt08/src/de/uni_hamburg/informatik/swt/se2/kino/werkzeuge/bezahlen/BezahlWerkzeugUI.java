@@ -2,11 +2,12 @@ package de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.bezahlen;
 
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 /**
- * Created by alex on 30/05/14.
+ * UI-Klasse des BezahlWerkzeugs
+ * @author Samah, Markus, Mostafa, Alex
  */
 public class BezahlWerkzeugUI
 {
@@ -28,7 +29,6 @@ public class BezahlWerkzeugUI
     private JLabel _restKomma;
     private JLabel _restCent;
     private JLabel _restWaehrung;
-
     private Geldbetrag _preis;
 
     public BezahlWerkzeugUI(Geldbetrag preis)
@@ -176,5 +176,9 @@ public class BezahlWerkzeugUI
     public void zeigeFehler(String meldung, String titel)
     {
         JOptionPane.showMessageDialog(_dialog, meldung, titel, JOptionPane.ERROR_MESSAGE);
+    }
+
+    public JLabel getRestKomma() {
+        return _restKomma;
     }
 }
