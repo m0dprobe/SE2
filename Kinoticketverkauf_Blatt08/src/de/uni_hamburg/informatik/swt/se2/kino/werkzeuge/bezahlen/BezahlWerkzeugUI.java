@@ -15,29 +15,29 @@ public class BezahlWerkzeugUI
     private JButton _okButton;
     private JButton _cancelButton;
     private JLabel _zuZahlenLabel;
-    private JLabel _zuZahlenEuro;
-    private JLabel _zuZahlenKomma;
+//    private JLabel _zuZahlenEuro;
+//    private JLabel _zuZahlenKomma;
     private JLabel _zuZahlenCent;
     private JLabel _zuZahlenWaehrung;
     private JLabel _gegebenLabel;
-    private JTextField _gegebenEuro;
-    private JLabel _gegebenKomma;
+//    private JTextField _gegebenEuro;
+//    private JLabel _gegebenKomma;
     private JTextField _gegebenCent;
     private JLabel _gegebenWaehrung;
     private JLabel _restLabel;
-    private JLabel _restEuro;
-    private JLabel _restKomma;
+//    private JLabel _restEuro;
+//    private JLabel _restKomma;
     private JLabel _restCent;
     private JLabel _restWaehrung;
-    private Geldbetrag _preis;
+    private int _preis;
 
-    public BezahlWerkzeugUI(Geldbetrag preis)
+    public BezahlWerkzeugUI(int preis)
     {
         _preis = preis;
         erzeugeUI(_preis);
     }
 
-    private void erzeugeUI(Geldbetrag preis)
+    private void erzeugeUI(int preis)
     {
         _dialog = new JDialog(new JDialog(), "Barzahlung", true);
         _dialog.setSize(300,160);
@@ -48,23 +48,24 @@ public class BezahlWerkzeugUI
         // DONE Layout verbessern
 
         _zuZahlenLabel = new JLabel("ZU ZAHLEN:");
-        _zuZahlenEuro = new JLabel(Integer.toString(preis.getEuroAnteil()));
-        _zuZahlenKomma = new JLabel(",");
-        _zuZahlenCent = new JLabel(preis.getFormatiertenCentAnteil());
-        _zuZahlenWaehrung = new JLabel("EUR");
+        //_zuZahlenEuro = new JLabel(Integer.toString(preis.getEuroAnteil()));
+        //_zuZahlenKomma = new JLabel(",");
+        _zuZahlenCent = new JLabel(Integer.toString(preis));
+        _zuZahlenWaehrung = new JLabel("Cent");
 
         _gegebenLabel = new JLabel("GEGEBEN:");
-        _gegebenEuro = new JTextField("", 2);
-        _gegebenEuro.setHorizontalAlignment(JTextField.RIGHT);
-        _gegebenKomma = new JLabel(",");
-        _gegebenCent = new JTextField("00", 2);
-        _gegebenWaehrung = new JLabel("EUR");
+        //_gegebenEuro = new JTextField("", 2);
+        //_gegebenEuro.setHorizontalAlignment(JTextField.RIGHT);
+        //_gegebenKomma = new JLabel(",");
+        _gegebenCent = new JTextField(6);
+        _gegebenCent.setHorizontalAlignment(JTextField.CENTER);
+        _gegebenWaehrung = new JLabel("Cent");
 
         _restLabel = new JLabel("RÜCKGABE:");
-        _restEuro = new JLabel(Integer.toString(preis.getEuroAnteil()));
-        _restKomma = new JLabel(",");
-        _restCent = new JLabel(preis.getFormatiertenCentAnteil());
-        _restWaehrung = new JLabel("EUR");
+        //_restEuro = new JLabel(Integer.toString(preis.getEuroAnteil()));
+        //_restKomma = new JLabel(",");
+        _restCent = new JLabel(Integer.toString(preis));
+        _restWaehrung = new JLabel("Cent");
 
         _okButton = new JButton("OK");
         _cancelButton = new JButton("Abbrechen");
@@ -84,18 +85,18 @@ public class BezahlWerkzeugUI
         _gegebenPanel.setLayout(new FlowLayout());
         _restPanel.setLayout(new FlowLayout());
         
-        _zuZahlenPanel.add(_zuZahlenEuro);
-        _zuZahlenPanel.add(_zuZahlenKomma);
+        //_zuZahlenPanel.add(_zuZahlenEuro);
+        //_zuZahlenPanel.add(_zuZahlenKomma);
         _zuZahlenPanel.add(_zuZahlenCent);
         _zuZahlenPanel.add(_zuZahlenWaehrung);
 
-        _gegebenPanel.add(_gegebenEuro);
-        _gegebenPanel.add(_gegebenKomma);
+        //_gegebenPanel.add(_gegebenEuro);
+        //_gegebenPanel.add(_gegebenKomma);
         _gegebenPanel.add(_gegebenCent);
         _gegebenPanel.add(_gegebenWaehrung);
 
-        _restPanel.add(_restEuro);
-        _restPanel.add(_restKomma);
+        //_restPanel.add(_restEuro);
+        //_restPanel.add(_restKomma);
         _restPanel.add(_restCent);
         _restPanel.add(_restWaehrung);
         
@@ -153,19 +154,9 @@ public class BezahlWerkzeugUI
         return _cancelButton;
     }
 
-    public JTextField getEingabeEuro()
-    {
-        return _gegebenEuro;
-    }
-
     public JTextField getEingabeCent()
     {
         return _gegebenCent;
-    }
-
-    public JLabel getRestEuro()
-    {
-        return _restEuro;
     }
 
     public JLabel getRestCent()
@@ -176,9 +167,5 @@ public class BezahlWerkzeugUI
     public void zeigeFehler(String meldung, String titel)
     {
         JOptionPane.showMessageDialog(_dialog, meldung, titel, JOptionPane.ERROR_MESSAGE);
-    }
-
-    public JLabel getRestKomma() {
-        return _restKomma;
     }
 }

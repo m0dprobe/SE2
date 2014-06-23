@@ -178,9 +178,9 @@ public class PlatzVerkaufsWerkzeug
     private void verkaufePlaetze(Vorstellung vorstellung)
     {
         final Set<Platz> plaetze = _ui.getPlatzplan().getAusgewaehltePlaetze();
-        Geldbetrag preis = new Geldbetrag(_vorstellung.getPreis() * plaetze.size());
+        //Geldbetrag preis = new Geldbetrag(_vorstellung.getPreis() * plaetze.size());
 
-        _bezahlwerkzeug = new BezahlWerkzeug(preis);
+        _bezahlwerkzeug = new BezahlWerkzeug(_vorstellung.getPreis() * plaetze.size());
         _bezahlwerkzeug.registriereBeobachter(new SubwerkzeugObserver()
         {
             @Override public void reagiereAufAenderung()
