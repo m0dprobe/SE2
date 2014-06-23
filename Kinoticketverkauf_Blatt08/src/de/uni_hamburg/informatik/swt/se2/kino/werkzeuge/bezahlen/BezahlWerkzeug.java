@@ -41,13 +41,22 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
             }
         });
 
-        _ui.getEingabeCent().addActionListener(new ActionListener()
-        {
-            @Override public void actionPerformed(ActionEvent e)
-            {
-                aufEingabeReagieren();
-            }
-        });
+        _ui.getEingabeCent().getDocument().addDocumentListener(
+                new DocumentListener()
+                {
+                    @Override public void insertUpdate(DocumentEvent e)
+                    {
+                        aufEingabeReagieren();
+                    }
+                    @Override public void removeUpdate(DocumentEvent e)
+                    {
+                        aufEingabeReagieren();
+                    }
+                    @Override public void changedUpdate(DocumentEvent e)
+                    {
+                        aufEingabeReagieren();
+                    }
+                });
 
         _ui.getEingabeEuro().getDocument().addDocumentListener(
                 new DocumentListener()
