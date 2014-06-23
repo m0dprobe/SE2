@@ -83,7 +83,7 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
     private void aufEingabeReagieren()
     {
         String input = _ui.getEingabeCent().getText();
-        if(input.matches("[0-9]*") && !input.equals(""))
+        if(input.matches("[0-9]*") && !input.isEmpty())
         {
             int input_int = Integer.parseInt(input);
             int restpreis = input_int - _preis;
@@ -102,7 +102,7 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
                 _ui.getOKButton().setEnabled(false);
             }
         }
-        else if (input.equals(""))
+        else if (input.isEmpty())
         {
         	_ui.getRestCent().setForeground(Color.red);
         	_ui.getRestCent().setText("-" + Integer.toString(_preis));
