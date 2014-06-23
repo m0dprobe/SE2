@@ -31,7 +31,7 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
     /**
      * Initialisiert die UI-Aktionen und zeigt den Dialog. 
      */
-    public void init()
+    public void initialisieren()
     {
         registriereUIAktionen();
         _ui.zeigeDialog();
@@ -86,10 +86,10 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
         if(input.matches("[0-9]*") && !input.equals(""))
         {
             int input_int = Integer.parseInt(input);
+            int restpreis = input_int - _preis;
             if(input_int >= _preis)
             {
                 _ui.getRestCent().setForeground(Color.black);
-                int restpreis = input_int - _preis;
                 _ui.getRestCent().setText(Integer.toString(restpreis));
 
                 _ui.getOKButton().setEnabled(true);
@@ -97,7 +97,6 @@ public class BezahlWerkzeug extends ObservableSubwerkzeug
             else
             {
             	_ui.getRestCent().setForeground(Color.red);
-                int restpreis = input_int - _preis;
                 _ui.getRestCent().setText(Integer.toString(restpreis));
 
                 _ui.getOKButton().setEnabled(false);

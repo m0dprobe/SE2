@@ -189,7 +189,7 @@ public class PlatzVerkaufsWerkzeug
             }
         });
 
-        _bezahlwerkzeug.init();
+        _bezahlwerkzeug.initialisieren();
 
         // vorstellung.verkaufePlaetze(plaetze);
         aktualisierePlatzplan();
