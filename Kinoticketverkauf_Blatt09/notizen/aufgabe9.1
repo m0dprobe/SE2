@@ -1,0 +1,22 @@
+Q: Was ist ein Fachwert und wie ist dieser gemäß der SE2-Entwurfsregeln aufgebaut?
+A: Fachwerte verkörpern anwendungsspezifische Werte:
+	* unveränderlich
+	* Fachwerte kennen nur andere Fachwerte
+	* wird durch eine Klasse modelliert
+	* muss equals und hashCode redefinieren
+	* in Java `final`
+	* Wertklasse sichert die Konsistenz ihrer Exemplare über das Vertragsmodell
+	* zu jeder Wertklasse eine Testklasse
+
+
+Q: Welche Vorteile bietet die Verwendung eines Fachwerttyps gegenüber einem Integertyp?
+A:  * kann man testen
+	* einfacher (intuitiver) zu nutzen
+	* komfortabler zu entwickeln
+	
+Q: Lässt euer Fachwert negative Beträge zu? Erläutert an konkreten Bespielen welche Konsequenzen 
+   eure Entscheidung hat.
+A: Ja. Man muss dann im konkreten Anwendungsfall prüfen, ob die Eingabe von negativen Beträgen gestattet ist.
+
+Q: An welchen Stellen im System wird euer Fachwerttyp zukünftig verwendet werden?
+A: s. UML + TODOs

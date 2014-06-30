@@ -22,7 +22,10 @@ public class Vorstellung
     private Uhrzeit _anfangszeit;
     private Uhrzeit _endzeit;
     private Datum _datum;
+    
+    // TODO Vorstellung int -> Geldbetrag
     private int _preis;
+    
     private boolean[][] _verkauft;
     private int _anzahlVerkauftePlaetze;
 
@@ -50,6 +53,7 @@ public class Vorstellung
      * @ensure getDatum() == datum
      * @ensure getPreis() == preis
      */
+     // TODO Vorstellung int -> Geldbetrag
     public Vorstellung(Kinosaal kinosaal, Film film, Uhrzeit anfangszeit,
             Uhrzeit endzeit, Datum datum, int preis)
     {
@@ -126,6 +130,7 @@ public class Vorstellung
      * zurück.
      * 
      */
+    // TODO Vorstellung int -> Geldbetrag
     public int getPreis()
     {
         return _preis;
@@ -187,6 +192,7 @@ public class Vorstellung
      * 
      * @require hatPlaetze(plaetze)
      */
+    // TODO Vorstellung int -> Geldbetrag
     public int getPreisFuerPlaetze(Set<Platz> plaetze)
     {
         assert hatPlaetze(plaetze) : "Vorbedingung verletzt: hatPlaetze(plaetze)";
