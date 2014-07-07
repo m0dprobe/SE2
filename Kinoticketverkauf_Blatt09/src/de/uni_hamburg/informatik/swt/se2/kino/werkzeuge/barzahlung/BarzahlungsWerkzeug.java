@@ -175,8 +175,8 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
         if (Geldbetrag.validate(eingabePreis))
         {
             Geldbetrag eingabeBetrag = new Geldbetrag(eingabePreis);
-            _ausreichenderGeldbetrag = (_preis.compareTo(eingabeBetrag) <= 0);
-            Geldbetrag differenz = Geldbetrag.subtract(eingabeBetrag, _preis);
+            _ausreichenderGeldbetrag = (_preis.compareTo(Geldbetrag.abs(eingabeBetrag)) <= 0);
+            Geldbetrag differenz = Geldbetrag.subtract(Geldbetrag.abs(eingabeBetrag), _preis);
             zeigeRestbetrag(differenz);
         }
         else

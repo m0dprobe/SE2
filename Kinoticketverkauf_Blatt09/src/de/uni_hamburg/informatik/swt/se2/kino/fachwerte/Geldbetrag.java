@@ -29,11 +29,11 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     {
         assert validate(inputString) : "Vorbedingung verletzt: validate(s)";
 
-        if (inputString.matches("[0-9]{1,7},[0-9]{2}"))
+        if (inputString.matches("[-]?[0-9]{1,7},[0-9]{2}"))
         {
             _cent = Integer.parseInt(inputString.replace(",", ""));
         }
-        else if (inputString.matches("[0-9]{1,7}"))
+        else if (inputString.matches("[-]?[0-9]{1,7}"))
         {
             _cent = Integer.parseInt(inputString)*100;
         }
@@ -141,7 +141,7 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
      */
     public static boolean validate(String parseString)
     {
-        return parseString.matches("[0-9]{1,7},[0-9]{2}") || parseString.matches("[0-9]{1,7}");
+        return parseString.matches("[-]?[0-9]{1,7},[0-9]{2}") || parseString.matches("[-]?[0-9]{1,7}");
     }
     
     /**
@@ -168,6 +168,12 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     public boolean equals(Geldbetrag other)
     {
         return (_cent == other._cent);
+    }
+    
+    
+    public static Geldbetrag abs(Geldbetrag betrag)
+    {
+        return new Geldbetrag(Math.abs(betrag._cent));
     }
     
     @Override
