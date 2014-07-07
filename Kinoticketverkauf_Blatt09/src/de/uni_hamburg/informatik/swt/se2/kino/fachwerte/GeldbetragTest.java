@@ -12,24 +12,24 @@ public class GeldbetragTest
     public final void testGeldbetragGetters()
     {
         Geldbetrag betrag = new Geldbetrag(100);
-        assertEquals(1, betrag.getEuroAnteil());
-        assertEquals(0, betrag.getCentAnteil());
-        assertEquals("1,00", betrag.getFormatiertenString());
+        assertEquals(1, betrag.getEuro());
+        assertEquals(0, betrag.getCent());
+        assertEquals("1,00", betrag.getFormattedString());
 
         betrag = new Geldbetrag(0);
-        assertEquals(0, betrag.getEuroAnteil());
-        assertEquals(0, betrag.getCentAnteil());
-        assertEquals("0,00", betrag.getFormatiertenString());
+        assertEquals(0, betrag.getEuro());
+        assertEquals(0, betrag.getCent());
+        assertEquals("0,00", betrag.getFormattedString());
 
         betrag = new Geldbetrag(99);
-        assertEquals(0, betrag.getEuroAnteil());
-        assertEquals(99, betrag.getCentAnteil());
-        assertEquals("0,99", betrag.getFormatiertenString());
+        assertEquals(0, betrag.getEuro());
+        assertEquals(99, betrag.getCent());
+        assertEquals("0,99", betrag.getFormattedString());
 
         betrag = new Geldbetrag(101);
-        assertEquals(1, betrag.getEuroAnteil());
-        assertEquals(1, betrag.getCentAnteil());
-        assertEquals("1,01", betrag.getFormatiertenString());
+        assertEquals(1, betrag.getEuro());
+        assertEquals(1, betrag.getCent());
+        assertEquals("1,01", betrag.getFormattedString());
     }
 
     @Test
@@ -52,36 +52,36 @@ public class GeldbetragTest
     @Test
     public final void testeAddieren()
     {
-        Geldbetrag betrag1 = new Geldbetrag(10,42);
-        Geldbetrag betrag2 = new Geldbetrag(5,23);
+        Geldbetrag betrag1 = new Geldbetrag(1042);
+        Geldbetrag betrag2 = new Geldbetrag(523);
         
-        assertEquals(15, Geldbetrag.addiere(betrag1, betrag2).getEuroAnteil());
-        assertEquals(65, Geldbetrag.addiere(betrag1, betrag2).getCentAnteil());
-        assertEquals("15,65", Geldbetrag.addiere(betrag1, betrag2).getFormatiertenString());
+        assertEquals(15, Geldbetrag.add(betrag1, betrag2).getEuro());
+        assertEquals(65, Geldbetrag.add(betrag1, betrag2).getCent());
+        assertEquals("15,65", Geldbetrag.add(betrag1, betrag2).getFormattedString());
         
     }
     
     @Test
-    public final void testeAddieren()
+    public final void testeSubtrahieren()
     {
-        Geldbetrag betrag1 = new Geldbetrag(10,42);
-        Geldbetrag betrag2 = new Geldbetrag(5,23);
+        Geldbetrag betrag1 = new Geldbetrag(1042);
+        Geldbetrag betrag2 = new Geldbetrag(523);
         
-        assertEquals(5, Geldbetrag.subtrahiere(betrag1, betrag2).getEuroAnteil());
-        assertEquals(19, Geldbetrag.subtrahiere(betrag1, betrag2).getCentAnteil());
-        assertEquals("5,19", Geldbetrag.subtrahiere(betrag1, betrag2).getFormatiertenString());
+        assertEquals(5, Geldbetrag.subtract(betrag1, betrag2).getEuro());
+        assertEquals(19, Geldbetrag.subtract(betrag1, betrag2).getCent());
+        assertEquals("5,19", Geldbetrag.subtract(betrag1, betrag2).getFormattedString());
         
     }
     
     @Test
     public final void testMultiplikation()
     {
-        Geldbetrag betrag1 = new Geldbetrag(10,42);
+        Geldbetrag betrag1 = new Geldbetrag(1042);
         int faktor = 2;
         
-        assertEquals(20, Geldbetrag.multipliziere(betrag1, faktor).getEuroAnteil());
-        assertEquals(84, Geldbetrag.multipliziere(betrag1, faktor).getCentAnteil());
-        assertEquals("20,84", Geldbetrag.multipliziere(betrag1, faktor).getFormatiertenString());
+        assertEquals(20, Geldbetrag.multiply(betrag1, faktor).getEuro());
+        assertEquals(84, Geldbetrag.multiply(betrag1, faktor).getCent());
+        assertEquals("20,84", Geldbetrag.multiply(betrag1, faktor).getFormattedString());
         
     }
     
@@ -90,8 +90,8 @@ public class GeldbetragTest
     {
         String betrag = "23,42";
         
-        assertEquals(23, Geldbetrag.parseString(betrag).getEuroAnteil());
-        assertEquals(42, Geldbetrag.parseString(betrag).getCentAnteil());
-        assertEquals("23,42", Geldbetrag.parseString(betrag).getFormatiertenString());
+        assertEquals(23, new Geldbetrag(betrag).getEuro());
+        assertEquals(42, new Geldbetrag(betrag).getCent());
+        assertEquals("23,42", new Geldbetrag(betrag).getFormattedString());
     }
 }
