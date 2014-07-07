@@ -14,22 +14,22 @@ public class GeldbetragTest
         Geldbetrag betrag = new Geldbetrag(100);
         assertEquals(1, betrag.getEuro());
         assertEquals(0, betrag.getCent());
-        assertEquals("1,00", betrag.getFormattedString());
+        assertEquals("1,00", betrag.toString());
 
         betrag = new Geldbetrag(0);
         assertEquals(0, betrag.getEuro());
         assertEquals(0, betrag.getCent());
-        assertEquals("0,00", betrag.getFormattedString());
+        assertEquals("0,00", betrag.toString());
 
         betrag = new Geldbetrag(99);
         assertEquals(0, betrag.getEuro());
         assertEquals(99, betrag.getCent());
-        assertEquals("0,99", betrag.getFormattedString());
+        assertEquals("0,99", betrag.toString());
 
         betrag = new Geldbetrag(101);
         assertEquals(1, betrag.getEuro());
         assertEquals(1, betrag.getCent());
-        assertEquals("1,01", betrag.getFormattedString());
+        assertEquals("1,01", betrag.toString());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class GeldbetragTest
         
         assertEquals(15, Geldbetrag.add(betrag1, betrag2).getEuro());
         assertEquals(65, Geldbetrag.add(betrag1, betrag2).getCent());
-        assertEquals("15,65", Geldbetrag.add(betrag1, betrag2).getFormattedString());
+        assertEquals("15,65", Geldbetrag.add(betrag1, betrag2).toString());
         
     }
     
@@ -69,7 +69,7 @@ public class GeldbetragTest
         
         assertEquals(5, Geldbetrag.subtract(betrag1, betrag2).getEuro());
         assertEquals(19, Geldbetrag.subtract(betrag1, betrag2).getCent());
-        assertEquals("5,19", Geldbetrag.subtract(betrag1, betrag2).getFormattedString());
+        assertEquals("5,19", Geldbetrag.subtract(betrag1, betrag2).toString());
         
     }
     
@@ -81,7 +81,7 @@ public class GeldbetragTest
         
         assertEquals(20, Geldbetrag.multiply(betrag1, faktor).getEuro());
         assertEquals(84, Geldbetrag.multiply(betrag1, faktor).getCent());
-        assertEquals("20,84", Geldbetrag.multiply(betrag1, faktor).getFormattedString());
+        assertEquals("20,84", Geldbetrag.multiply(betrag1, faktor).toString());
         
     }
     
@@ -92,6 +92,6 @@ public class GeldbetragTest
         
         assertEquals(23, new Geldbetrag(betrag).getEuro());
         assertEquals(42, new Geldbetrag(betrag).getCent());
-        assertEquals("23,42", new Geldbetrag(betrag).getFormattedString());
+        assertEquals("23,42", new Geldbetrag(betrag).toString());
     }
 }

@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
 import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.ObservableSubwerkzeug;
 
 /**
@@ -36,7 +37,7 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
     private BarzahlungsWerkzeugUI _ui;
     
     // TODO int -> Geldbetrag
-    private int _preis;
+    private Geldbetrag _preis;
     
     private boolean _barzahlungErfolgreich;
     private boolean _ausreichenderGeldbetrag;
@@ -59,7 +60,7 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
      * @param preis der einzunehmende Gelbetrag
      */
     // TODO int -> Geldbetrag
-    public void fuehreBarzahlungDurch(int preis)
+    public void fuehreBarzahlungDurch(Geldbetrag preis)
     {
         _preis = preis;
         _ausreichenderGeldbetrag = false;
@@ -173,9 +174,9 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
         }
         try
         {
-            int eingabeBetrag = Integer.parseInt(eingabePreis);
-            _ausreichenderGeldbetrag = (eingabeBetrag >= _preis);
-            int differenz = Math.abs(eingabeBetrag - _preis);
+            Geldbetrag eingabeBetrag = new Geldbetrag(eingabePreis);
+            _ausreichenderGeldbetrag = (_preis.compareTo(eingabeBetrag) <= 0);
+            Geldbetrag differenz = Geldbetrag.subtract(eingabeBetrag, _preis);
             zeigeRestbetrag(differenz);
         }
         catch (NumberFormatException ignore)
@@ -252,9 +253,9 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
      * @param differenz ein eingegebener Betrag
      */
     // TODO int -> Geldbetrag
-    private void zeigeRestbetrag(int differenz)
+    private void zeigeRestbetrag(Geldbetrag differenz)
     {
-        _ui.getRestbetragTextfield().setText(differenz + " Eurocent");
+        _ui.getRestbetragTextfield().setText(differenz + " €");
     }
 
     /**
@@ -263,6 +264,6 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
     private void zeigePreis()
     {
         // TODO int -> Geldbetrag
-        _ui.getPreisTextfield().setText(_preis + " Eurocent");
+        _ui.getPreisTextfield().setText(_preis + " €");
     }
 }

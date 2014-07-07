@@ -18,13 +18,27 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     public Geldbetrag(String s)
     {
         assert validate(s) : "Vorbedingung verletzt: validate(s)";
-        _cent = Integer.parseInt(s.replace(",", ""));
+
+        if (s.matches("[0-9]{1,7},[0-9]{2}"))
+        {
+            _cent = Integer.parseInt(s.replace(",", ""));
+        }
+        else if (s.matches("[0-9]{1,7}"))
+        {
+            _cent = Integer.parseInt(s)*100;
+        }
+        else 
+        {
+            _cent = 0;
+        }
+        
     }
     
-    public String getFormattedString()
+    @Override
+    public String toString()
     {
         int euro = _cent / 100;
-        int cent = _cent % 100;
+        int cent = Math.abs(_cent % 100);
         
         String centF;
         
@@ -65,9 +79,14 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
         return new Geldbetrag(g._cent * factor);
     }
     
-    public static boolean validate(String s)
+    private static boolean validate(String s)
     {
-        return s.matches("[0-9]{1,7},[0-9]{2}");
+        return s.matches("[0-9]{1,7},[0-9]{2}") || s.matches("[0-9]{1,7}");
+    }
+    
+    public int getCentValue()
+    {
+        return _cent;
     }
     
     @Override
