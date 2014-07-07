@@ -95,6 +95,8 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
      */
     public static Geldbetrag add(Geldbetrag summand1, Geldbetrag summand2)
     {
+        assert summand1.isAdditionPossible(summand2) : "Vorbedingung verletzt: Summe wäre größer als Integer.MAX_VALUE";
+        
         return new Geldbetrag(summand1._cent + summand2._cent);
     }
     
@@ -106,6 +108,8 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
      */
     public static Geldbetrag subtract(Geldbetrag minuend, Geldbetrag subtrahend)
     {
+        assert minuend.isSubtractionPossible(subtrahend) : "Vorbedingung verletzt: Differenz wäre kleiner als Integer.MIN_VALUE";
+        
         return new Geldbetrag(minuend._cent - subtrahend._cent);
     }
     
@@ -124,6 +128,8 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     
     public static Geldbetrag multiply(Geldbetrag geldbetrag, int factor)
     {
+        assert geldbetrag.isMultiplicationPossible(factor) : "Vorbedingung verletzt: Produkt wäre außerhalb des Integer-Bereichs";
+        
         return new Geldbetrag(geldbetrag._cent * factor);
     }
     
@@ -168,5 +174,20 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     public int hashCode()
     {
         return _cent;
+    }
+    
+    private boolean isAdditionPossible(Geldbetrag other)
+    {
+        return ((long)this._cent + (long)other._cent) < Integer.MAX_VALUE;
+    }
+    
+    private boolean isSubtractionPossible(Geldbetrag other)
+    {
+        return ((long)this._cent - (long)other._cent) > Integer.MIN_VALUE;
+    }
+    
+    private boolean isMultiplicationPossible(int other)
+    {
+        return ((long)this._cent * (long)other) < Integer.MAX_VALUE && ((long)this._cent * (long)other) > Integer.MIN_VALUE;
     }
 }
