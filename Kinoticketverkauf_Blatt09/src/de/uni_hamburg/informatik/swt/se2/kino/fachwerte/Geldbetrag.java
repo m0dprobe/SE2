@@ -1,7 +1,5 @@
 package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 
-// TODO Kommentare schreiben
-
 /**
  * Modelliert den Fachwert eines Geldbetrags im Kinosystem.
  * @author Samah, Markus, Mostafa, Alex
