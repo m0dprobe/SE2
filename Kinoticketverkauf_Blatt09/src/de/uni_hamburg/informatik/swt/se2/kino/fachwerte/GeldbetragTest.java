@@ -77,12 +77,19 @@ public class GeldbetragTest
     public final void testMultiplikation()
     {
         Geldbetrag betrag1 = new Geldbetrag(1042);
-        int faktor = 2;
+        Double faktor = 2.0;
         
         assertEquals(20, Geldbetrag.multiply(betrag1, faktor).getEuro());
         assertEquals(84, Geldbetrag.multiply(betrag1, faktor).getCent());
         assertEquals("20,84", Geldbetrag.multiply(betrag1, faktor).toString());
         
+        
+        faktor = 0.5;
+        
+        assertEquals(5, Geldbetrag.multiply(betrag1, faktor).getEuro());
+        assertEquals(21, Geldbetrag.multiply(betrag1, faktor).getCent());
+        assertEquals("5,21", Geldbetrag.multiply(betrag1, faktor).toString());
+
     }
     
     @Test

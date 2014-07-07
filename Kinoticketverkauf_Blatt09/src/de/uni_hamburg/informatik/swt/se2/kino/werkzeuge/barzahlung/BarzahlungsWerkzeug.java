@@ -172,18 +172,19 @@ public class BarzahlungsWerkzeug extends ObservableSubwerkzeug
         {
             eingabePreis = "0";
         }
-        try
+        if (Geldbetrag.validate(eingabePreis))
         {
             Geldbetrag eingabeBetrag = new Geldbetrag(eingabePreis);
             _ausreichenderGeldbetrag = (_preis.compareTo(eingabeBetrag) <= 0);
             Geldbetrag differenz = Geldbetrag.subtract(eingabeBetrag, _preis);
             zeigeRestbetrag(differenz);
         }
-        catch (NumberFormatException ignore)
+        else
         {
             _ausreichenderGeldbetrag = false;
             zeigeFehlertext();
         }
+        
         zeigeAusreichenderGeldbetragStatus();
     }
 
